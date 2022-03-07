@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter&family=Mochiy+Pop+P+One&family=Quintessential&display=swap");
+
+//Variables and functions
+$white: #ffffff;
+$darkPink: #e91e63;
+$pink : #f80759;
+$lightWhite: #dff1ff;
+$yellow: #fffd87;
+$black: #000000;
+
+@mixin flexdDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html {
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #0f2027;
+  background: linear-gradient(to right, #2c5364f1, #203a43f1, #0f2027f1) ,
+  url("./assets/clock.jpg") no-repeat center / cover;
+  font-family: "Mochiy Pop P One", sans-serif;
+  cursor: url("./assets/cursor.png"), auto;
+  overflow: hidden;
+  @include flexdDisplay();
+}
+
+
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f2027;
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  @include flexdDisplay();
+
+  & span {
+    position: relative;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: $pink;
+    margin: 10px;
+    animation: load 1s ease forwards infinite;
+    transition: 0.5s;
+
+    &:nth-child(1) {
+      animation-duration: 1.2s;
+    }
+
+    &:nth-child(2) {
+      animation-duration: 1.6s;
+    }
+
+    &:nth-child(3) {
+      animation-duration: 2s;
+    }
+
+    @keyframes load {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+  }
+}
+
+
+.title {
+  position: absolute;
+  top: 30px;
+  transform: translateX(25px);
+
+  & h1 {
+    color: $white;
+    font-size: 3.5rem;
+    letter-spacing: 1.5px;
+    font-family: "Comforter", cursive;
+  }
+  z-index: 112;
+}
+
+.timeContainer {
+  position: relative;
+  width: 390px;
+  height: 200px;
+  padding: 0 15px;
+  background: $white;
+  border-radius: 15px;
+  @include flexdDisplay();
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 10px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+  transition: 0.5s;
+  color: #0f2027;
+
+  & .minutes {
+    position: relative;
+    width: 45%;
+    height: 100%;
+    @include flexdDisplay();
+
+    & h1 {
+      font-size: 5rem;
+    }
+  }
+
+  & .seconds {
+    @extend .minutes;
+  }
+
+  & .divider {
+    position: relative;
+    left: 3px;
+    width: 10%;
+    height: 100%;
+    @include flexdDisplay();
+
+    & h1 {
+      font-size: 4rem;
+      animation: blink 1s ease-out infinite;
+      color: #2c5364;
+    }
+
+    @keyframes blink {
+      0%,
+      10%,
+      60% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.sessionContainer {
+  position: absolute;
+  transform: translateY(-200px) translateX(60px) scale(0);
+  user-select: none;
+  width: 390px;
+  height: 200px;
+  padding: 0 15px;
+  background: $white;
+  border-radius: 15px;
+  visibility: hidden;
+  opacity: 0;
+  @include flexdDisplay();
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 10px rgba(0, 0, 0, 0.5);
+  transition: 500ms;
+  transform-origin: top right;
+
+  &.active {
+    transform: translateY(-200px) translatex(0px) scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & .arrow {
+    position: relative;
+    width: 33%;
+    height: 100%;
+    @include flexdDisplay();
+
+    & .arrowSymbol {
+      transform: scale(2);
+      color: $darkPink;
+    }
+  }
+
+  & .sessionLength {
+    position: relative;
+    width: 34%;
+    height: 100%;
+    @include flexdDisplay();
+
+    & h1 {
+      font-size: 4rem;
+    }
+  }
+}
+
+.breakContainer {
+  @extend .sessionContainer;
+  &.active {
+    transform: translateY(-200px) translatex(0) scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.tools {
+  position: absolute;
+  top: -30px;
+  right: -70px;
+
+  & .settingsLogo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: $white;
+    border-radius: 50%;
+    @include flexdDisplay();
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5),
+      inset -1px -1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 11;
+
+    & .settingIcon {
+      color: $darkPink;
+      transform: scale(1.15);
+      animation: rotate 1s linear infinite;
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  & .settings {
+    position: relative;
+    top: 13px;
+    width: 40px;
+    height: 100%;
+    padding: 10px;
+    background: $white;
+    @include flexdDisplay();
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5),
+      inset -1px -1px 3px rgba(0, 0, 0, 0.5);
+    transform: translateY(-50px);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    transition: 0.5s;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    & .toolsIcon {
+      color: $darkPink;
+      transform: scale(1.15);
+      margin: 10px 0;
+    }
+  }
+}
+
+.controls {
+  position: absolute;
+  bottom: -100px;
+
+  & .controlIcon {
+    background: $white;
+    color: $darkPink;
+    padding: 2px;
+    transform: scale(1.7);
+    margin: 14px 40px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+      inset -1px -1px 3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media screen and (max-width : 650px){
+  .timeContainer{
+    transform: scale(0.8);
+  }
+}
+
+
+@media screen and (max-width : 450px){
+  .title{ 
+    transform: translateX(50px);
+    & h1{
+    font-size: 3rem;
+   }
+  }
+  .timeContainer{
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width : 350px){
+  .timeContainer{
+    transform: scale(0.55);
+  }
+}
