@@ -248,8 +248,12 @@ class App extends Component {
         handleBreakLengthDecre={this.breakLengthDecrement}
       />
 
-
       <audio id="alarm" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav" />
+      
+      <div className="footer">
+        <h3>Brusooo</h3>
+      </div>
+      
     </div>
     )
   }

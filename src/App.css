@@ -412,6 +412,18 @@ body {
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), inset -1px -1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.footer {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  opacity: 0.5;
+}
+
+.footer h3 {
+  color: #ffffff;
+  font-family: "Comforter", cursive;
+}
+
 @media screen and (max-width: 650px) {
   .timeContainer {
     -webkit-transform: scale(0.8);
@@ -428,15 +440,22 @@ body {
     font-size: 3rem;
   }
   .timeContainer {
-    -webkit-transform: scale(0.6);
-            transform: scale(0.6);
+    -webkit-transform: scale(0.65);
+            transform: scale(0.65);
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 300px) {
+  .title {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+  }
+  .title h1 {
+    font-size: 2rem;
+  }
   .timeContainer {
-    -webkit-transform: scale(0.55);
-            transform: scale(0.55);
+    -webkit-transform: translateX(-13px) scale(0.55);
+            transform: translateX(-13px) scale(0.55);
   }
 }
 /*# sourceMappingURL=App.css.map */

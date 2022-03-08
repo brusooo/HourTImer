@@ -287,6 +287,17 @@ body {
   }
 }
 
+.footer{
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  opacity: 0.5;
+  & h3{
+    color: $white;
+    font-family: "Comforter", cursive;
+  }
+}
+
 @media screen and (max-width : 650px){
   .timeContainer{
     transform: scale(0.8);
@@ -302,12 +313,19 @@ body {
    }
   }
   .timeContainer{
-    transform: scale(0.6);
+    transform: scale(0.65);
   }
 }
 
-@media screen and (max-width : 350px){
+@media screen and (max-width : 300px){
+  .title{ 
+    transform: translateX(100px);
+    & h1{
+    font-size: 2rem;
+   }
+  }
   .timeContainer{
-    transform: scale(0.55);
+    transform: translateX(-13px) scale(0.55);
   }
 }
+
